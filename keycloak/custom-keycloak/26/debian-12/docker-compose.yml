@@ -16,7 +16,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: alanmatias/keycloak-custom:26.4.0
+    image: alanmatias/keycloak-custom:26.4.5
     depends_on:
       - postgresql
     ports:

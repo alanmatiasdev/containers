@@ -21,9 +21,9 @@ RUN --mount=type=secret,id=downloads_url,env=SECRET_DOWNLOADS_URL \
     DOWNLOADS_URL=${SECRET_DOWNLOADS_URL:-${DOWNLOADS_URL}} ; \
     mkdir -p /tmp/bitnami/pkg/cache/ ; cd /tmp/bitnami/pkg/cache/ || exit 1 ; \
     COMPONENTS=( \
-      "wait-for-port-1.0.10-1-linux-${OS_ARCH}-debian-12" \
-      "jre-21.0.8-12-1-linux-${OS_ARCH}-debian-12" \
-      "keycloak-26.4.0-0-linux-${OS_ARCH}-debian-12" \
+      "wait-for-port-1.0.10-4-linux-${OS_ARCH}-debian-12" \
+      "jre-21.0.9-11-0-linux-${OS_ARCH}-debian-12" \
+      "keycloak-26.4.5-0-linux-${OS_ARCH}-debian-12" \
     ) ; \
     for COMPONENT in "${COMPONENTS[@]}"; do \
       if [ ! -f "${COMPONENT}.tar.gz" ]; then \
@@ -42,9 +42,9 @@ RUN find / -perm /6000 -type f -exec chmod a-s {} \; || true
 COPY rootfs /
 RUN /opt/bitnami/scripts/java/postunpack.sh
 RUN /opt/bitnami/scripts/keycloak/postunpack.sh
-ENV APP_VERSION="26.4.0" \
+ENV APP_VERSION="26.4.5" \
     BITNAMI_APP_NAME="keycloak" \
-    IMAGE_REVISION="1" \
+    IMAGE_REVISION="0" \
     JAVA_HOME="/opt/bitnami/java" \
     PATH="/opt/bitnami/common/bin:/opt/bitnami/java/bin:/opt/bitnami/keycloak/bin:$PATH"
 
